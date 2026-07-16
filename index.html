@@ -227,15 +227,19 @@ body{font-family:Arial;overflow-x:hidden}
   position:relative;
   z-index:3;
 }
+.screen2 .middle .week{
+  position:relative;
+  z-index:3;
+}
 
-/* ===== ПУЛЬСИРУЮЩЕЕ СЕРДЦЕ С ОБВОДКОЙ ===== */
+/* ===== ПУЛЬСИРУЮЩЕЕ СЕРДЦЕ - ТОЛЬКО КОНТУР ===== */
 .screen2 .heart-pulse{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-  width: clamp(140px, 28vw, 240px);
-  height: clamp(140px, 28vw, 240px);
+  width: clamp(300px, 60vw, 500px);
+  height: clamp(300px, 60vw, 500px);
   pointer-events:none;
   z-index:1;
   animation: heartPulse 1.8s ease-in-out infinite;
@@ -246,9 +250,9 @@ body{font-family:Arial;overflow-x:hidden}
   display:block;
 }
 @keyframes heartPulse{
-  0%{transform:translate(-50%, -50%) scale(0.90);}
-  50%{transform:translate(-50%, -50%) scale(1.05);}
-  100%{transform:translate(-50%, -50%) scale(0.90);}
+  0%{transform:translate(-50%, -50%) scale(0.92);}
+  50%{transform:translate(-50%, -50%) scale(1.04);}
+  100%{transform:translate(-50%, -50%) scale(0.92);}
 }
 .screen2 .heart-pulse .heart-stroke{
   fill:none;
@@ -278,23 +282,17 @@ body{font-family:Arial;overflow-x:hidden}
   height:100%;
 }
 .screen2 .heart-content .week{
-  font-size: clamp(14px, 2.8vw, 22px);
+  font-size: clamp(18px, 3vw, 30px);
   font-weight:600;
   color:#111;
   margin-bottom: clamp(2px, 0.5vw, 6px);
-  letter-spacing:1px;
+  letter-spacing:2px;
 }
 .screen2 .heart-content .number{
-  font-size: clamp(80px, 18vw, 160px);
+  font-size: clamp(120px, 25vw, 220px);
   font-weight:700;
   color:#000;
   line-height:1;
-}
-.screen2 .middle .week{
-  margin-bottom: clamp(2px, 0.5vw, 6px);
-}
-.screen2 .middle .number{
-  font-size: clamp(80px, 18vw, 160px);
 }
 
 .screen2 .photo-wrapper{
@@ -858,7 +856,7 @@ body{font-family:Arial;overflow-x:hidden}
           <div class="number">9</div>
         </div>
         <div class="cell middle" style="position:relative;">
-          <!-- ПУЛЬСИРУЮЩЕЕ СЕРДЦЕ С ОБВОДКОЙ -->
+          <!-- ПУЛЬСИРУЮЩЕЕ СЕРДЦЕ - ТОЛЬКО КОНТУР (в 3 раза больше) -->
           <div class="heart-pulse" id="heartPulse">
             <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
               <path class="heart-stroke pink" id="heartPath" 
