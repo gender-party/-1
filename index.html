@@ -224,6 +224,42 @@ body{font-family:Arial;overflow-x:hidden}
   font-size: clamp(80px, 18vw, 160px);
   font-weight:700;
   line-height:1;
+  position:relative;
+  z-index:3;
+}
+
+/* ===== ПУЛЬСИРУЮЩЕЕ СЕРДЦЕ ВОКРУГ ДАТЫ ===== */
+.screen2 .heart-pulse{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width: clamp(110px, 22vw, 190px);
+  height: clamp(110px, 22vw, 190px);
+  pointer-events:none;
+  z-index:1;
+  animation: heartPulse 1.8s ease-in-out infinite;
+}
+.screen2 .heart-pulse svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+@keyframes heartPulse{
+  0%{transform:translate(-50%, -50%) scale(0.88); opacity:0.7;}
+  25%{transform:translate(-50%, -50%) scale(1.02); opacity:1;}
+  50%{transform:translate(-50%, -50%) scale(0.95); opacity:0.85;}
+  75%{transform:translate(-50%, -50%) scale(1.05); opacity:1;}
+  100%{transform:translate(-50%, -50%) scale(0.88); opacity:0.7;}
+}
+.screen2 .heart-pulse .heart-color{
+  transition: fill 1.8s ease-in-out;
+}
+.screen2 .heart-pulse .heart-color.pink{
+  fill:#df5aa5;
+}
+.screen2 .heart-pulse .heart-color.blue{
+  fill:#00a9d8;
 }
 
 .screen2 .photo-wrapper{
@@ -234,7 +270,7 @@ body{font-family:Arial;overflow-x:hidden}
   top: 50%;
   transform:translate(-50%, -50%);
   pointer-events: none;
-  z-index:1;
+  z-index:0;
 }
 .screen2 .photo-wrapper img{
   width:100%;
@@ -779,20 +815,26 @@ body{font-family:Arial;overflow-x:hidden}
   </div>
 
   <div class="calendar-wrapper animate-on-scroll">
-    <div class="month-title">АВГУСТ</div>
+    <div class="month-title">НОЯБРЬ</div>
     <div class="calendar">
       <div class="days">
         <div class="cell">
-          <div class="week">ЧЕТВЕРГ</div>
-          <div class="number">28</div>
+          <div class="week">ВТОРНИК</div>
+          <div class="number">9</div>
         </div>
         <div class="cell middle">
-          <div class="week">ПЯТНИЦА</div>
-          <div class="number">29</div>
+          <div class="week">СРЕДА</div>
+          <div class="number">10</div>
+          <!-- ПУЛЬСИРУЮЩЕЕ СЕРДЦЕ ВОКРУГ ДАТЫ -->
+          <div class="heart-pulse" id="heartPulse">
+            <svg viewBox="0 0 100 100">
+              <path class="heart-color" id="heartPath" d="M50,88 C20,65 0,50 0,30 C0,12 15,0 30,0 C40,0 47,5 50,12 C53,5 60,0 70,0 C85,0 100,12 100,30 C100,50 80,65 50,88Z"/>
+            </svg>
+          </div>
         </div>
         <div class="cell">
-          <div class="week">СУББОТА</div>
-          <div class="number">30</div>
+          <div class="week">ЧЕТВЕРГ</div>
+          <div class="number">11</div>
         </div>
       </div>
       <div class="photo-wrapper">
@@ -824,11 +866,11 @@ body{font-family:Arial;overflow-x:hidden}
   <div class="location-block animate-on-scroll">
     <div class="location-title">Где?</div>
     <div class="location-address">
-      <span class="location-name">Агроусадьба «Хутор у Михалыча»</span>
-      <span class="location-details">Брестская область, д. Заречье,<br>ул. Октябрьская, д. 52</span>
+      <span class="location-name">Усадьба «Эден»</span>
+      <span class="location-details">Минская область, аг. Сеница,<br>ул. Набережная, д. 1</span>
     </div>
     <div class="map-container">
-      <iframe src="https://yandex.by/map-widget/v1/org/agrousadba_u_mikhalycha/86193548886/?ll=25.040347%2C52.535838&mode=search&z=16" allowfullscreen loading="lazy"></iframe>
+      <iframe src="https://yandex.by/map-widget/v1/org/usadba_eden/116050297727/?ll=27.532005%2C53.829894&z=13" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
 
@@ -863,39 +905,30 @@ body{font-family:Arial;overflow-x:hidden}
   <div class="details-title animate-on-scroll">Детали</div>
 
   <div class="details-text animate-on-scroll">
-Нам будет так приятно видеть в ваших руках цветок — розовый, если вы за девочку, или голубой, если за мальчика. Пусть каждый лепесток станет маленьким признанием в любви к нашему будущему чуду!
+    Мы подготовили для вас уютный вечер в кругу самых близких людей. Вас ждёт тёплая атмосфера, душевные разговоры, вкусные угощения и, конечно, главная интрига — кто же поселится в наших сердцах: принцесса или принц?
   </div>
 
   <div class="details-text animate-on-scroll">
-    Для вашего комфорта и безопасности мы позаботимся о том, чтобы каждый гость добрался домой с теплом в сердце. По завершении вечера мы с радостью вызовем такси для всех гостей.
+    Пусть этот день запомнится нам всем искренними улыбками, счастливыми мгновениями и тем особенным трепетом, который бывает только в ожидании чуда. Мы очень хотим разделить эту радость именно с вами!
   </div>
 
   <div class="details-text animate-on-scroll">
-    В программе — природа, баня, ароматные шашлыки, весёлые конкурсы, громкий смех и отличное настроение.<br>
-    Одевайтесь удобно и будьте готовы веселиться от души!
+    В программе вечера — приятные сюрпризы, музыка, танцы и незабываемая атмосфера. Приходите с открытым сердцем и хорошим настроением — мы обещаем, что этот вечер будет по-настоящему волшебным!
   </div>
 
   <div class="form-title animate-on-scroll">Анкета</div>
 
   <div class="form-subtitle animate-on-scroll">
-    Пожалуйста, подтвердите присутствие до 20 августа.
+    Пожалуйста, подтвердите присутствие до 1 ноября.
   </div>
 
   <form class="form-container animate-on-scroll" id="guestForm" accept-charset="UTF-8" onsubmit="return submitForm(event)">
     
-    <!-- Фамилия и Имя -->
     <div class="form-field">
       <label class="form-label">Фамилия и Имя</label>
       <input type="text" name="name" class="form-input" placeholder="Иванов Иван" required>
     </div>
 
-    <!-- Номер телефона -->
-    <div class="form-field">
-      <label class="form-label">Контактный телефон</label>
-      <input type="tel" name="phone" class="form-input" placeholder="+375 29 123 45 67" required>
-    </div>
-
-    <!-- Один или с +1 -->
     <div class="form-field">
       <label class="form-label">Будете ли Вы одни или с +1?</label>
       <div class="radio-group">
@@ -910,7 +943,6 @@ body{font-family:Arial;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- Предпочтения по алкоголю -->
     <div class="form-field">
       <label class="form-label">Предпочтения по алкоголю</label>
       <div class="checkbox-group">
@@ -941,7 +973,6 @@ body{font-family:Arial;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- Будете ли с детьми -->
     <div class="form-field">
       <label class="form-label">Будете ли Вы с детьми?</label>
       <div class="radio-group">
@@ -960,10 +991,9 @@ body{font-family:Arial;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- Пожелания/особенности -->
     <div class="form-field">
-      <label class="form-label">Ваши пожелания или особенности (аллергии, диета и т.п.)</label>
-      <input type="text" name="wishes" class="form-input" placeholder="Например: аллергия на орехи, вегетарианство...">
+      <label class="form-label">Ваши пожелания (аллергии, особенности питания, музыкальные предпочтения)</label>
+      <input type="text" name="wishes" class="form-input" placeholder="Например: аллергия на цитрусовые, люблю рок, не ем рыбу...">
     </div>
 
     <button type="submit" class="submit-btn">Отправить</button>
@@ -975,8 +1005,8 @@ body{font-family:Arial;overflow-x:hidden}
 
   <div class="contacts-info animate-on-scroll">
     По всем вопросам обращайтесь:<br>
-    <span style="font-weight:600;">Владислав</span><br>
-    <a href="tel:+375296663344" class="contacts-phone" style="text-decoration:none;color:#111;">+375 29 666 33 44</a>
+    <span style="font-weight:600;">Елена</span><br>
+    <a href="tel:+375291112233" class="contacts-phone" style="text-decoration:none;color:#111;">+375 29 111 22 33</a>
   </div>
 
   <div class="stars-triangle-bottom animate-on-scroll">
@@ -1115,8 +1145,24 @@ button.addEventListener('click', () => {
   }
 });
 
-// ===== ТАЙМЕР (29 августа 2026) =====
-const targetDate = new Date('2026-08-29T18:00:00');
+// ===== ПУЛЬСИРУЮЩЕЕ СЕРДЦЕ (розовый ↔ голубой) =====
+const heartPath = document.getElementById('heartPath');
+let heartState = 0; // 0 = pink, 1 = blue
+
+setInterval(() => {
+  if (heartState === 0) {
+    heartPath.classList.remove('pink');
+    heartPath.classList.add('blue');
+    heartState = 1;
+  } else {
+    heartPath.classList.remove('blue');
+    heartPath.classList.add('pink');
+    heartState = 0;
+  }
+}, 1800);
+
+// ===== ТАЙМЕР (10 ноября 2026) =====
+const targetDate = new Date('2026-11-10T18:00:00');
 
 function pluralize(n, forms) {
   const m = Math.abs(n) % 100;
